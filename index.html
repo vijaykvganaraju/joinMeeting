@@ -49,8 +49,12 @@
                 let meetingLinkDetailsArray = meetingLinkDetails.split("?pwd=");
                 let confNo = "confno=" + meetingLinkDetailsArray[0];
                 let uname = "uname=" + name;
-                let password = "pwd=" + meetingLinkDetailsArray[1];
-                let joinLink = "zoommtg://zoom.us/join?" + confNo + "&zc=0&browser=chrome&" + uname + "&" + password;
+                if(meetingLinkArray.length > 1) {
+                    let password = "pwd=" + meetingLinkDetailsArray[1];
+                    let joinLink = "zoommtg://zoom.us/join?" + confNo + "&zc=0&browser=chrome&" + uname + "&" + password;
+                } else {                    
+                    let joinLink = "zoommtg://zoom.us/join?" + confNo + "&zc=0&browser=chrome&" + uname;
+                }
                 document.querySelector("#join").href = joinLink;
             } else {
                 alert("Enter both Zoom Meeting Link and Name with Meeting ID fields!")
