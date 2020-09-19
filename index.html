@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Zoom Meeting</title>
+    <style>
+        .home {
+            padding: 5px 0 0 5px;
+        }
+        .inputLink {
+            font-family: sans-serif;
+            margin: 10px;
+        }
+        input {
+            margin-left: 10px;
+            padding: 5px;
+            min-width: 600px;
+            border-radius: 5px;
+        }
+        button  {
+            margin: 10px;
+            border-radius: 5px;
+            height: 30px;
+        }
+        button:hover {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="home">
+        <div class="inputLink">
+            Zoom Meeting Link<input type="text" id="link" placeholder="https://shorelight.zoom.us/j/4078308714?pwd=c0orY1lqQWUvT1NjcEs2Rmx2WjgrQT09" required>
+        </div>
+        <div class="inputLink">
+            Name with Meeting ID<input type="text" id="name" placeholder="John_1234" required>
+        </div>
+        <button onclick="generate_link()">Generate Meeting Link</button>
+        <a id="join" target="_blank">Join Meeting</a>
+    </div>
+    <script>
+        function generate_link() {
+            let meetingLink = document.querySelector("#link").value.split("/");
+            let name = document.querySelector("#name").value;
+            if(meetingLink.length > 0 && name.length > 0) {
+                let meetingLinkArray = document.querySelector("#link").value.split("/");
+                let meetingLinkDetails = meetingLinkArray[meetingLinkArray.length - 1];
+                let meetingLinkDetailsArray = meetingLinkDetails.split("?pwd=");
+                let confNo = "confno=" + meetingLinkDetailsArray[0];
+                let uname = "uname=" + name;
+                let password = "pwd=" + meetingLinkDetailsArray[1];
+                let joinLink = "zoommtg://zoom.us/join?" + confNo + "&zc=0&browser=chrome&" + uname + "&" + password;
+                document.querySelector("#join").href = joinLink;
+            } else {
+                alert("Enter both Zoom Meeting Link and Name with Meeting ID fields!")
+            }
+        }
+    </script>
+</body>
+</html>
