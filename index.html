@@ -56,7 +56,7 @@
             }
             var name = document.querySelector("#name").value;
             if(meetingLink.length > 0 && name.length > 0) {
-                var meetingLinkArray = document.querySelector("#link").value.split("/");
+                var meetingLinkArray = meetingLink.split("/");
                 var meetingLinkDetails = meetingLinkArray[meetingLinkArray.length - 1];
                 var meetingLinkDetailsArray = meetingLinkDetails.split("?pwd=");
                 var confNo = "confno=" + meetingLinkDetailsArray[0];
