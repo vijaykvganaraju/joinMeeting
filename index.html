@@ -50,10 +50,10 @@
                 let confNo = "confno=" + meetingLinkDetailsArray[0];
                 let uname = "uname=" + name;
                 if(meetingLinkArray.length > 1) {
-                    let password = "pwd=" + meetingLinkDetailsArray[1];
-                    let joinLink = "zoommtg://zoom.us/join?" + confNo + "&zc=0&browser=chrome&" + uname + "&" + password;
+                    var password = "pwd=" + meetingLinkDetailsArray[1];
+                    var joinLink = "zoommtg://zoom.us/join?" + confNo + "&zc=0&browser=chrome&" + uname + "&" + password;
                 } else {                    
-                    let joinLink = "zoommtg://zoom.us/join?" + confNo + "&zc=0&browser=chrome&" + uname;
+                    var joinLink = "zoommtg://zoom.us/join?" + confNo + "&zc=0&browser=chrome&" + uname;
                 }
                 document.querySelector("#join").href = joinLink;
             } else {
